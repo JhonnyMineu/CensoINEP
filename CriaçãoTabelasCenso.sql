@@ -3,7 +3,9 @@ CREATE TABLE dim_instituicao (
         CO_IES INT PRIMARY KEY,
         NO_IES VARCHAR(255),
         TP_ORGANIZACAO_ACADEMICA INT,
-        NO_ORGANIZACAO_ACADEMICA VARCHAR(255)
+        NO_ORGANIZACAO_ACADEMICA VARCHAR(255),
+		TP_REDE INT,
+		NO_TP_REDE VARCHAR(20)
 );
 
 
@@ -24,21 +26,23 @@ CREATE TABLE dim_modalidade (
 );
 
 CREATE TABLE dim_tempo (
-        ID_Ano INT PRIMARY KEY,
-        Ano INT
+		idRegistro INT IDENTITY(1,1),
+        NU_ANO_CENSO INT PRIMARY KEY
 );
 
 CREATE TABLE fato_educacao (
         ID INT IDENTITY(1,1) PRIMARY KEY,
-        Ano INT,
+        NU_ANO_CENSO INT,
+        CO_UF INT,
+        TP_REDE INT,
         CO_IES INT,
-        CO_CURSO INT,
         TP_MODALIDADE_ENSINO INT,
-        Qtd_Ingressantes INT,
-        Qtd_Matriculados INT,
-        Qtd_Concluintes INT,
+        CO_CURSO INT,
+        QT_ING INT,
+        QT_MAT INT,
+        QT_CONC INT,
         FOREIGN KEY (CO_IES) REFERENCES dim_instituicao(CO_IES),
         FOREIGN KEY (CO_CURSO) REFERENCES dim_curso(CO_CURSO),
         FOREIGN KEY (TP_MODALIDADE_ENSINO) REFERENCES dim_modalidade(TP_MODALIDADE_ENSINO),
-        FOREIGN KEY (Ano) REFERENCES dim_tempo(ID_Ano)
+        FOREIGN KEY (NU_ANO_CENSO) REFERENCES dim_tempo(NU_ANO_CENSO)
 );
