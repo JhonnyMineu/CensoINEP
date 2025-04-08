@@ -47,11 +47,11 @@ Construído com base nos princípios de modelagem dimensional.
 
 Principais tabelas:
 
-- dim_curso
-- dim_ano
-- dim_modalidade
-- dim_ies
-- fato_matricula
+- dim_Curso
+- dim_Tempo
+- dim_Modalidade
+- dim_Instituicao
+- fato_Censos
 
 📊 Dashboards (Power BI)
 Painel Geral
